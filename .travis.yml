@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t tpm Dockerfile.dev 
+
+script:
+  - docker run tpm npm run test -- -e CI=true
