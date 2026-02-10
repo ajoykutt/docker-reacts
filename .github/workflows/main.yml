@@ -1,0 +1,14 @@
+name: Deploy frontend
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login -u 
+      - run: docker build 05 cygnetops/reacts-test -f Dockerfile.dev
+      - run: docker run -e CI=true cygnetops/reacts-test npm test
